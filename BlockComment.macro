@@ -1,0 +1,38 @@
+$If(!Selected) 
+  $AKey
+$Else 
+  editor.undo(0); 
+  bm.push();
+
+  %lineStart=editor.sel(0,0);
+  %lineEnd=editor.sel(0,2);
+  %columnEnd=editor.sel(0,3);
+
+  $If(%columnEnd==0 && %lineStart!=%lineEnd)
+    %lineEnd=%lineEnd-1;
+  $End
+
+  editor.pos(1,1,%lineEnd);
+  %commentEnd=index(substr(Editor.Value,0,2),"*/");
+  editor.pos(1,1,%lineStart);
+  %commentStart=index(substr(Editor.Value,0,2),"/*"); 
+
+  editor.sel(4);
+  editor.pos(1,2,1);
+
+  $If(%commentStart!=-1 && %commentEnd!=-1)
+    editor.pos(1,1,%lineStart);
+    Del Del Del
+    editor.pos(1,1,%lineEnd-1);
+    Del Del Del
+    editor.pos(1,1,%lineStart);
+  $Else
+    editor.pos(1,1,%lineStart);
+    print("/*\n");
+    editor.pos(1,1,%lineEnd+2);
+    print("*/\n");
+  $End
+
+  bm.pop(); 
+  editor.undo(1); 
+$End
