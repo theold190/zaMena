@@ -5,10 +5,10 @@ Brief
 
 Description
     BlockComment - Macro that wraps/unwraps selected code in "/* */" multiline 
-    comment. Select lines to comment and type '*' (star) character.
+    comment. Select lines to comment and type '*' (star) key.
 
     LineComment - Macro that wraps/unwraps selected code in "//" line 
-    comment. Select lines to comment and type '/' (slash) character.
+    comment. Select lines to comment and type '/' (slash) key.
 
     BlockShiftRight - Macro that allows to shift selected code to the 
     right with a Tab key. Select lines to shift and press a Tab key.
@@ -19,6 +19,10 @@ Description
 
     BlockTrimRight - Macro that allows to remove trailing whitespaces from 
     a selected code block. Select lines to trim and press a Space key.
+
+    SimpleIndent - Macro that allows to do some simple formatting of the 
+    selected code block. Select block to format (starting with '{' and ending 
+    with '}') and press 'i' key;
 
 Installation
     To install a macro run a corresponding .reg file, to install all macros just 
