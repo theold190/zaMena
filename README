@@ -13,6 +13,10 @@ Description
     BlockShiftRight - Macro that allows to shift selected code to the 
     right with a Tab key. Select lines to shift and press a Tab key.
 
+    BlockShiftLeft - Macro that allows to shift selected code to the 
+    left with a Shift+Tab key combination. Select lines to shift and press a 
+    Shift+Tab key combination.
+
     BlockTrimRight - Macro that allows to remove trailing whitespaces from 
     a selected code block. Select lines to trim and press a Space key.
 
