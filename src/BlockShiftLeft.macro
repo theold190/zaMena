@@ -13,56 +13,11 @@ $Else
     %endLine=%endLine-1;
   $End
 
-  %iter=%startLine;
-  $While(%iter<=%endLine)
-    editor.pos(1,1,%iter);
-    editor.pos(1,2,1);
-    %buff=Editor.Value;
-    %buffLen=len(%buff);
-    $If(%buffLen!=0)
-      %trimedLen=len(trim(%buff,1));
-      $if(%trimedLen!=%buffLen)
-        $if(%buffLen>=%trimedLen+%tabSize)
-          %buff=substr(%buff,%tabSize);
-        $Else
-          %buff=substr(%buff,%buffLen-%trimedLen);
-        $End
-        CtrlY print(%buff) Enter
-        %shifted=1;
-      $End
-    $End
-    %iter=%iter+1;
-  $End
-
-  $If(%shifted==0)
-    %shiftSize=0;
-  $Else
-    %shiftSize=-%tabSize;
-  $End
-
-  $If(%endColumn==0)
-    editor.pos(1,2,%startColumn);
-    editor.pos(1,1,%startLine);
-    editor.sel(2,0);
-
-    editor.pos(1,2,%startColumn);
-    editor.pos(1,1,%endLine+1);
-    editor.sel(2,1);
-
-    editor.pos(1,2,%startColumn);
-    editor.pos(1,1,%positionLine);
-  $Else
-    editor.pos(1,2,%startColumn+%shiftSize);
-    editor.pos(1,1,%startLine);
-    editor.sel(2,0);
-
-    editor.pos(1,2,%endColumn+1+%shiftSize);
-    editor.pos(1,1,%endLine);
-    editor.sel(2,1);
-
-    editor.pos(1,2,%positionColumn+%shiftSize);
-    editor.pos(1,1,%positionLine);
-  $End
+  %startShiftLine=%startLine;
+  %endShiftLine=%endLine;
+  %shiftSize=-%tabSize;
+  Eval(%%ShiftCodeBlock)
+  Eval(%%RestoreShiftSelection)
 
   editor.undo(1);
 $End

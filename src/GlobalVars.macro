@@ -16,6 +16,57 @@ $End
   %endLine=editor.sel(0,2);
   %endColumn=editor.sel(0,3);
 
+%%ShiftCodeBlock=
+  %iter=%startShiftLine;
+  $While(%iter<=%endShiftLine)
+    editor.pos(1,1,%iter);
+    editor.pos(1,2,1);
+    %buff=Editor.Value;
+    %buffLen=len(%buff);
+
+    $If(%buffLen!=0)
+      %trimmedBuff=trim(%buff,1);
+      %indent=%buffLen-len(%trimmedBuff);
+      $If(%indent+%shiftSize > 0)
+        $Rep(%indent+%shiftSize)
+          print(" ");
+        $End
+        %shifted=1;
+      $End
+      print(trim(%buff,1)) Enter CtrlY
+    $End
+    %iter=%iter+1;
+  $End
+
+%%RestoreShiftSelection=
+  $If(%shifted==0)
+    %shiftSize=0;
+  $End
+
+  $If(%endColumn==0)
+    editor.pos(1,2,%startColumn);
+    editor.pos(1,1,%startLine);
+    editor.sel(2,0);
+
+    editor.pos(1,2,%startColumn);
+    editor.pos(1,1,%endLine+1);
+    editor.sel(2,1);
+
+    editor.pos(1,2,%startColumn);
+    editor.pos(1,1,%positionLine);
+  $Else
+    editor.pos(1,2,%startColumn+%shiftSize);
+    editor.pos(1,1,%startLine);
+    editor.sel(2,0);
+
+    editor.pos(1,2,%endColumn+1+%shiftSize);
+    editor.pos(1,1,%endLine);
+    editor.sel(2,1);
+
+    editor.pos(1,2,%positionColumn+%shiftSize);
+    editor.pos(1,1,%positionLine);
+  $End
+
 %%FormatCodeBlock=
   editor.pos(1,1,%startFormatLine);
   %indentStartFlag=index(Editor.Value,"{");
