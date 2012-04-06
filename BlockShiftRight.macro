@@ -30,13 +30,7 @@ $Else
     editor.pos(1,1,%iter);
     editor.pos(1,2,1);
     %buff=Editor.Value;
-    %buffLen=len(%buff);
-    $If(%buffLen!=0)
-      $if(len(trim(%buff))!=0)
-        Tab
-      $End
-      print(trim(%buff,2)); Enter CtrlY
-    $End
+    Tab print(%buff); Enter CtrlY
     %iter=%iter+1;
   $End
 
