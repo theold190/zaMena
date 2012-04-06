@@ -4,27 +4,27 @@ Brief
     http://code.google.com/p/far-macro-library/.
 
 Description
-    BlockComment - Macro that wraps/unwraps selected code in "/* */" multiline 
+    CommentBlock - Macro that wraps/unwraps selected code in "/* */" multiline 
     comment. Select lines to comment and type '*' (star) key.
 
-    LineComment - Macro that wraps/unwraps selected code in "//" line 
+    CommentLines - Macro that wraps/unwraps selected code in "//" line 
     comment. Select lines to comment and type '/' (slash) key.
 
-    BlockShiftRight - Macro that allows to shift selected code to the 
-    right with a Tab key. Select lines to shift and press a Tab key.
-
-    BlockShiftLeft - Macro that allows to shift selected code to the 
-    left with a Shift+Tab key combination. Select lines to shift and press a 
-    Shift+Tab key combination.
-
-    BlockTrimRight - Macro that allows to remove trailing whitespaces from 
-    a selected code block. Select lines to trim and press a Space key.
-
-    SimpleIndent - Macro that allows to do some simple formatting of the 
+    IndentBlock - Macro that allows to do some simple formatting of the 
     selected code block. Select block to format (starting with '{' and ending 
     with '}') and press 'i' key;
 
+    ShiftLeft - Macro that allows to shift selected code to the 
+    left with a Shift+Tab key combination. Select lines to shift and press a 
+    Shift+Tab key combination.
+
+    ShiftRight - Macro that allows to shift selected code to the 
+    right with a Tab key. Select lines to shift and press a Tab key.
+
+    TrimRight - Macro that allows to remove trailing whitespaces from 
+    a selected code block. Select lines to trim and press a Space key.
+
 Installation
-    To install a macro run a GlobalVars.reg and corresponding .reg file. To install 
-    all macros at once just run zaMena.reg file. Restart FarManager and give a try 
-    to a new feature. Tested on FarManager version 2.0.1777.
+    To install a macro run a GlobalVars.reg and corresponding .reg file. To 
+    install all macros at once just run zaMena.reg file. Restart FarManager and 
+    give a try to a new feature. Tested on FarManager version 2.0.1777.
