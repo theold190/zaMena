@@ -1,0 +1,15 @@
+Brief
+    This is a tiny collections of macros for FarManager. More info you can 
+    find on farmanager.com. Some more advanced macros are located on 
+    http://code.google.com/p/far-macro-library/.
+
+Description
+    BlockComment - Macro that wraps/unwraps selected code in "/* */" multiline 
+    comment. Select lines to comment and type '*' (star) character.
+
+    LineComment - Macro that wraps/unwraps selected code in "//" line 
+    comment. Select lines to comment and type '/' (slash) character.
+
+Installation
+    To install a macro just run a .reg file, restart FarManager and try 
+    new feature it. Tested on FarManager version 2.0.1777.
