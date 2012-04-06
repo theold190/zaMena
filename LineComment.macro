@@ -1,33 +1,38 @@
-$If(!Selected) 
+$If(!Selected)
   $AKey
-$Else 
-  editor.undo(0); 
-  bm.push();
+$Else
+  editor.undo(0);
 
-  %lineStart=editor.sel(0,0);
-  %lineEnd=editor.sel(0,2);
-  %columnEnd=editor.sel(0,3);
+  %positionLine=editor.pos(0,1);
+  %positionColumn=editor.pos(0,2);
 
-  $If(%columnEnd==0 && %lineStart!=%lineEnd)
-    %lineEnd=%lineEnd-1;
+  %startLine=editor.sel(0,0);
+  %endLine=editor.sel(0,2);
+  %endColumn=editor.sel(0,3);
+
+  $If(%endColumn==0 && %startLine!=%endLine)
+    %endLine=%endLine-1;
   $End
 
-  %iter=%lineStart;
+  %iter=%startLine;
   editor.sel(4);
 
   editor.pos(1,1,%iter);
-  %fd=index(substr(Editor.Value,0,2),"//"); 
+  %fd=index(substr(Editor.Value,0,2),"//");
 
-  $While (%iter<=%lineEnd)
-    editor.pos(1,2,1); 
-    editor.pos(1,1,%iter); 
-    $If(%fd==-1) 
-      print("//"); 
-    $Else 
-      $If(index(substr(Editor.Value,0,2),"//")!=-1) Del Del $End 
-    $End 
-    %iter=%iter+1; 
-  $End 
-  bm.pop(); 
-  editor.undo(1); 
+  $While (%iter<=%endLine)
+    editor.pos(1,2,1);
+    editor.pos(1,1,%iter);
+    $If(%fd==-1)
+      print("//");
+    $Else
+      $If(index(substr(Editor.Value,0,2),"//")!=-1) Del Del $End
+    $End
+    %iter=%iter+1;
+  $End
+
+  editor.pos(1,2,%positionColumn);
+  editor.pos(1,1,%positionLine);
+
+  editor.undo(1);
 $End
