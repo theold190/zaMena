@@ -15,6 +15,7 @@ $Else
 
   %iterStart=%startLine;
   %iterEnd=%endLine;
+
   $While(%iterStart < %iterEnd)
 
     editor.pos(1,1,%iterStart);
@@ -23,20 +24,28 @@ $Else
       editor.pos(1,1,%iterStart);
     $End
 
-    editor.pos(1,1,%iterEnd);
-    $While(index(Editor.Value, "}") == -1 && %iterStart <= %iterEnd)
-      %iterEnd=%iterEnd-1;
-      editor.pos(1,1,%iterEnd);
+    %deep=0;
+    %iter=%iterStart+1;
+    editor.pos(1,1,%iter);
+    $While((%deep != 0 || index(Editor.Value, "}") == -1) && %iter <= %iterEnd)
+      $If(index(Editor.Value, "{") != -1)
+        %deep=%deep+1;
+      $Else
+        $If(index(Editor.Value, "}") != -1)
+          %deep=%deep-1;
+        $End
+      $End
+      %iter=%iter+1;
+      editor.pos(1,1,%iter);
     $End
 
-    $If(%iterStart < %iterEnd)
+    $If(%iterStart < %iter)
       %startFormatLine=%iterStart;
-      %endFormatLine=%iterEnd;
+      %endFormatLine=%iter;
       Eval(%%FormatCodeBlock)
     $End
 
     %iterStart=%iterStart+1;
-    %iterEnd=%iterEnd-1;
   $End
 
   editor.pos(1,2,%positionColumn);
