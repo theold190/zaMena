@@ -13,35 +13,30 @@ $Else
     %endLine=%endLine-1;
   $End
 
-  editor.pos(1,1,%startLine);
-  %indentStartFlag=index(Editor.Value,"{");
-  editor.pos(1,1,%endLine);
-  %indentStopFlag=index(Editor.Value,"}");
+  %iterStart=%startLine;
+  %iterEnd=%endLine;
+  $While(%iterStart < %iterEnd)
 
-  $If(%indentStartFlag != -1 && %indentStopFlag != -1)
-    editor.pos(1,1,%startLine);
-    %indentColumn=len(Editor.Value)-len(trim(Editor.Value,1));
-    %iter=%startLine+1;
-    $While(%iter<=%endLine)
-      editor.pos(1,1,%iter);
-      editor.pos(1,2,1);
-      %buff=Editor.Value;
-      %currIndent=len(%buff)-len(trim(%buff,1));
-
-      $If(%iter != %endLine)
-        %reqIndent=%indentColumn+%tabSize;
-      $Else
-        %reqIndent=%indentColumn;
-      $End
-
-      $If(%currIndent != %reqIndent)
-        $Rep(%reqIndent)
-          print(" ");
-        $End
-        print(trim(%buff,1)); Enter CtrlY
-      $End
-      %iter=%iter+1;
+    editor.pos(1,1,%iterStart);
+    $While(index(Editor.Value, "{") == -1 && %iterStart <= %iterEnd)
+      %iterStart=%iterStart+1;
+      editor.pos(1,1,%iterStart);
     $End
+
+    editor.pos(1,1,%iterEnd);
+    $While(index(Editor.Value, "}") == -1 && %iterStart <= %iterEnd)
+      %iterEnd=%iterEnd-1;
+      editor.pos(1,1,%iterEnd);
+    $End
+
+    $If(%iterStart < %iterEnd)
+      %startFormatLine=%iterStart;
+      %endFormatLine=%iterEnd;
+      Eval(%%FormatCodeBlock)
+    $End
+
+    %iterStart=%iterStart+1;
+    %iterEnd=%iterEnd-1;
   $End
 
   editor.pos(1,2,%positionColumn);
