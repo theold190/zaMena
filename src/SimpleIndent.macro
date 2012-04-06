@@ -24,6 +24,7 @@ $Else
       editor.pos(1,1,%iterStart);
     $End
 
+    %comment="%deep is used to find proper matching bracket";
     %deep=0;
     %iter=%iterStart+1;
     editor.pos(1,1,%iter);
@@ -39,6 +40,7 @@ $Else
       editor.pos(1,1,%iter);
     $End
 
+    %comment="As we found start and end of a block - use %%FormatCodeBlock mini-macro";
     $If(%iterStart < %iter)
       %startFormatLine=%iterStart;
       %endFormatLine=%iter;

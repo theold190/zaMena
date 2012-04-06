@@ -22,6 +22,7 @@ $End
   editor.pos(1,1,%endFormatLine);
   %indentStopFlag=index(Editor.Value,"}");
 
+  %comment="Flags are indicating that we can somehow handle this block";
   $If(%indentStartFlag != -1 && %indentStopFlag != -1)
     editor.pos(1,1,%startFormatLine);
     %indentColumn=len(Editor.Value)-len(trim(Editor.Value,1));
@@ -32,12 +33,14 @@ $End
       %buff=Editor.Value;
       %currIndent=len(%buff)-len(trim(%buff,1));
 
+      %comment="We have different indent for block lines and a closing bracket";
       $If(%iter != %endFormatLine)
         %reqIndent=%indentColumn+%tabSize;
       $Else
         %reqIndent=%indentColumn;
       $End
 
+      %comment="Now we set the requested indent and add trimmed line";
       $If(%currIndent != %reqIndent)
         $Rep(%reqIndent)
           print(" ");
