@@ -25,6 +25,6 @@ Description
     with '}') and press 'i' key;
 
 Installation
-    To install a macro run a corresponding .reg file, to install all macros just 
-    run zaMena.reg file. Restart FarManager and give a try to a new feature.
-    Tested on FarManager version 2.0.1777.
+    To install a macro run a GlobalVars.reg and corresponding .reg file. To install 
+    all macros at once just run zaMena.reg file. Restart FarManager and give a try 
+    to a new feature. Tested on FarManager version 2.0.1777.
