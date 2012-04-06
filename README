@@ -21,6 +21,6 @@ Description
     a selected code block. Select lines to trim and press a Space key.
 
 Installation
-    To install a macro just run a .reg file, restart FarManager and try 
-    new feature it. Tested on FarManager version 2.0.1777. Tabs are 
-    replaced by spaces.
+    To install a macro run a corresponding .reg file, to install all macros just 
+    run zaMena.reg file. Restart FarManager and give a try to a new feature.
+    Tested on FarManager version 2.0.1777.
