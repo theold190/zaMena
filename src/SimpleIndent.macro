@@ -14,13 +14,13 @@ $Else
   $End
 
   editor.pos(1,1,%startLine);
-  %indentStartFlag=index(substr(trim(Editor.Value),0,1),"{");
+  %indentStartFlag=index(Editor.Value,"{");
   editor.pos(1,1,%endLine);
-  %indentStopFlag=index(substr(trim(Editor.Value),0,1),"}");
+  %indentStopFlag=index(Editor.Value,"}");
 
   $If(%indentStartFlag != -1 && %indentStopFlag != -1)
     editor.pos(1,1,%startLine);
-    %indentColumn=index(Editor.Value,"{");
+    %indentColumn=len(Editor.Value)-len(trim(Editor.Value,1));
     %iter=%startLine+1;
     $While(%iter<=%endLine)
       editor.pos(1,1,%iter);
