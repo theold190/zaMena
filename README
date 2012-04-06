@@ -10,6 +10,13 @@ Description
     LineComment - Macro that wraps/unwraps selected code in "//" line 
     comment. Select lines to comment and type '/' (slash) character.
 
+    BlockShiftRight - Macro that allows to shift selected code to the 
+    right with a Tab key. Select lines to shift and press a Tab key.
+
+    BlockTrimRight - Macro that allows to remove trailing whitespaces from 
+    a selected code block. Select lines to trim and press a Space key.
+
 Installation
     To install a macro just run a .reg file, restart FarManager and try 
-    new feature it. Tested on FarManager version 2.0.1777.
+    new feature it. Tested on FarManager version 2.0.1777. Tabs are 
+    replaced by spaces.
