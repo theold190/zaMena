@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%GetTabSize"="$If(%tabSize<0)     editor.pos(1,2,1);     %tmpBuff=Editor.Value;     Tab print(%tmpBuff); Enter Up     %tabSize=len(Editor.Value)-len(%tmpBuff);     CtrlY $End"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%GetInitialPosition"="%positionLine=editor.pos(0,1);   %positionColumn=editor.pos(0,2);    %startLine=editor.sel(0,0);   %startColumn=editor.sel(0,1);   %endLine=editor.sel(0,2);   %endColumn=editor.sel(0,3);"

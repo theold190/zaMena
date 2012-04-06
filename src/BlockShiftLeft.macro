@@ -10,20 +10,14 @@ $Else
   %endLine=editor.sel(0,2);
   %endColumn=editor.sel(0,3);
   %iter=%startLine;
-  %tabSize=-1;
-
-  $If(%endColumn==0 && %startLine!=%endLine)
-    %endLine=%endLine-1;
-  $End
 
   editor.sel(4);
 
-  $If(%tabSize<0)
-    editor.pos(1,2,1);
-    %tmpBuff=Editor.Value;
-    Tab print(%tmpBuff); Enter Up
-    %tabSize=len(Editor.Value)-len(%tmpBuff);
-    CtrlY
+  %tabSize=-1;
+  Eval(%%GetTabSize)
+
+  $If(%endColumn==0 && %startLine!=%endLine)
+    %endLine=%endLine-1;
   $End
 
   $While(%iter<=%endLine)
