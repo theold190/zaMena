@@ -18,23 +18,29 @@ REGEDIT4
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\*]
 "Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    editor.pos(1,1,%endLine);   %endComment=index(substr(Editor.Value,0,2),\"*/\");   editor.pos(1,1,%startLine);   %startComment=index(substr(Editor.Value,0,2),\"/*\");    editor.sel(4);   editor.pos(1,2,1);    $If(%startComment!=-1 && %endComment!=-1)     editor.pos(1,1,%startLine);     Del Del Del     editor.pos(1,1,%endLine-1);     Del Del Del     editor.pos(1,1,%startLine);     $If(%positionLine>%startLine)       %shiftedLine=-2;     $End   $Else     editor.pos(1,1,%startLine);     print(\"/*\\n\");     editor.pos(1,1,%endLine+2);     print(\"*/\\n\");     $If(%positionLine>%startLine)       %shiftedLine=2;     $End   $End    editor.pos(1,2,%positionColumn);   editor.pos(1,1,%positionLine+%shiftedLine);    editor.undo(1); $End"
 "DisableOutput"=dword:00000001
+"Description"="(Un)comment block of code"
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\/]
 "Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %iter=%startLine;   editor.sel(4);    editor.pos(1,1,%iter);   %fd=index(substr(Editor.Value,0,2),\"//\");    $While (%iter<=%endLine)     editor.pos(1,2,1);     editor.pos(1,1,%iter);     $If(%fd==-1)       print(\"//\");     $Else       $If(index(substr(Editor.Value,0,2),\"//\")!=-1) Del Del $End     $End     %iter=%iter+1;   $End    editor.pos(1,2,%positionColumn);   editor.pos(1,1,%positionLine);    editor.undo(1); $End"
 "DisableOutput"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\ShiftTab]
-"Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    editor.sel(4);    %tabSize=-1;   Eval(%%GetTabSize)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %startShiftLine=%startLine;   %endShiftLine=%endLine;   %shiftSize=-%tabSize;   Eval(%%ShiftCodeBlock)   Eval(%%RestoreShiftSelection)    editor.undo(1); $End"
-"DisableOutput"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Tab]
-"Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    editor.sel(4);    %tabSize=-1;   Eval(%%GetTabSize)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %startShiftLine=%startLine;   %endShiftLine=%endLine;   %shiftSize=%tabSize;   Eval(%%ShiftCodeBlock)   Eval(%%RestoreShiftSelection)    editor.undo(1); $End"
-"DisableOutput"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Space]
-"Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    editor.sel(4);    %iter=%startLine;   $While(%iter<=%endLine)     editor.pos(1,1,%iter);     editor.pos(1,2,1);     %buff=Editor.Value;     %buffLen=len(%buff);     $If(%buffLen!=0)       $if(len(trim(%buff)) != %buffLen)         print(trim(%buff,2)); Enter CtrlY       $End     $End     %iter=%iter+1;   $End    editor.pos(1,1,%positionLine);   $If(%positionColumn>len(Editor.Value))     End   $Else     editor.pos(1,2,%positionColumn);   $End    editor.undo(1); $End"
-"DisableOutput"=dword:00000001
+"Description"="(Un)comment lines of code"
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\i]
 "Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    editor.sel(4);    %tabSize=-1;   Eval(%%GetTabSize)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %iterStart=%startLine;   %iterEnd=%endLine;    $While(%iterStart < %iterEnd)      editor.pos(1,1,%iterStart);     $While(index(Editor.Value, \"{\") == -1 && %iterStart <= %iterEnd)       %iterStart=%iterStart+1;       editor.pos(1,1,%iterStart);     $End      %comment=\"%deep is used to find proper matching bracket\";     %deep=0;     %iter=%iterStart+1;     editor.pos(1,1,%iter);     $While((%deep != 0 || index(Editor.Value, \"}\") == -1) && %iter <= %iterEnd)       $If(index(Editor.Value, \"{\") != -1)         %deep=%deep+1;       $Else         $If(index(Editor.Value, \"}\") != -1)           %deep=%deep-1;         $End       $End       %iter=%iter+1;       editor.pos(1,1,%iter);     $End      %comment=\"As we found start and end of a block - use %%FormatCodeBlock mini-macro\";     $If(%iterStart < %iter)       %startFormatLine=%iterStart;       %endFormatLine=%iter;       Eval(%%FormatCodeBlock)     $End      %iterStart=%iterStart+1;   $End    editor.pos(1,2,%positionColumn);   editor.pos(1,1,%positionLine);    editor.undo(1); $End"
 "DisableOutput"=dword:00000001
+"Description"="Indent selected block of code"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\ShiftTab]
+"Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    editor.sel(4);    %tabSize=-1;   Eval(%%GetTabSize)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %startShiftLine=%startLine;   %endShiftLine=%endLine;   %shiftSize=-%tabSize;   Eval(%%ShiftCodeBlock)   Eval(%%RestoreShiftSelection)    editor.undo(1); $End"
+"DisableOutput"=dword:00000001
+"Description"="Shifts block of code to the right"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Tab]
+"Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    editor.sel(4);    %tabSize=-1;   Eval(%%GetTabSize)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %startShiftLine=%startLine;   %endShiftLine=%endLine;   %shiftSize=%tabSize;   Eval(%%ShiftCodeBlock)   Eval(%%RestoreShiftSelection)    editor.undo(1); $End"
+"DisableOutput"=dword:00000001
+"Description"="Shifts block of code to the left"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Space]
+"Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    editor.sel(4);    %iter=%startLine;   $While(%iter<=%endLine)     editor.pos(1,1,%iter);     editor.pos(1,2,1);     %buff=Editor.Value;     %buffLen=len(%buff);     $If(%buffLen!=0)       $if(len(trim(%buff)) != %buffLen)         print(trim(%buff,2)); Enter CtrlY       $End     $End     %iter=%iter+1;   $End    editor.pos(1,1,%positionLine);   $If(%positionColumn>len(Editor.Value))     End   $Else     editor.pos(1,2,%positionColumn);   $End    editor.undo(1); $End"
+"DisableOutput"=dword:00000001
+"Description"="Trims trailing spaces"
