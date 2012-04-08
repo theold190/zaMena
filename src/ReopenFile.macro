@@ -1,0 +1,20 @@
+%rf_loaded=mload("%%ClosedFile");
+$If(%rf_loaded == 1 && fexist(%%ClosedFile))
+  %rf_file=%%ClosedFile;
+  %rf_previousFile=APanel.Path+"\\"+APanel.Current;
+
+  %selectFile_fullPath=%rf_file;
+  Eval(%%SelectFile)
+  F4
+  Eval(%%MinimizeEditor)
+
+  %selectFile_fullPath=%rf_previousFile;
+  Eval(%%SelectFile)
+
+  Eval(%%MaximizeEditor)
+  %selectFileTab_fileName=%rf_file;
+  Eval(%%SelectFileTab)
+
+  %%ClosedFile="";
+  msave("%%ClosedFile");
+$End

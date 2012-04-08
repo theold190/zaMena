@@ -33,6 +33,10 @@ Description
     selected code block. Select block to format (starting with '{' and ending 
     with '}') and press 'i' key;
 
+    ReopenFile - Macro that allows to re-open in editor a last closed 
+    file. Open a file in editor, exit with Esc button, then press 
+    Ctrl+Shift+Z in a file panel to re-open it.
+
     ShiftLeft - Macro that allows to shift selected code to the 
     left with a Shift+Tab key combination. Select lines to shift and press a 
     Shift+Tab key combination.
