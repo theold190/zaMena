@@ -109,6 +109,15 @@
     panel.setpath(0,%selectFile_path,%selectFile_name);
   $End
 
+%%SelectFileTab=
+  %sft_previousFileName=Editor.FileName;
+  $If(%selectFileTab_fileName != Editor.FileName)
+    $While(%selectFileTab_fileName != Editor.FileName
+           && %sft_previousFileName != Editor.FileName)
+      CtrlTab
+    $End
+  $End
+
 %%BackupFile=
   $If(APanel.FilePanel && APanel.Visible && !APanel.Folder)
     %bf_fileName=APanel.Current;
@@ -120,7 +129,6 @@
     $End
     ShiftF5 CtrlY print(%bf_fileBackupName) Enter
   $End
-
 
 %%BackupFileFromEditor=
   Eval(%%MinimizeEditor)

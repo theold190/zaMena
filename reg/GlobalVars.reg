@@ -25,8 +25,10 @@ REGEDIT4
 "%%SelectFile"="$If(APanel.FilePanel && fexist(%selectFile_fullPath))     %selectFile_path=fsplit(%selectFile_fullPath,0x00000001|0x00000002);     %selectFile_name=fsplit(%selectFile_fullPath,0x00000004|0x00000008);     panel.setpath(0,%selectFile_path,%selectFile_name);   $End"
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%SelectFileTab"="%selectFileTab_previousFileName=Editor.FileName;   $If(%sft_fileName != Editor.FileName)     $While(%selectFileTab_fileName != Editor.FileName            && %sft_fileName != Editor.FileName)       CtrlTab     $End   $End"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%ShiftCodeBlock"="%iter=%startShiftLine;   $While(%iter<=%endShiftLine)     editor.pos(1,1,%iter);     editor.pos(1,2,1);     %buff=Editor.Value;     %buffLen=len(%buff);      $If(%buffLen!=0)       %trimmedBuff=trim(%buff,1);       %indent=%buffLen-len(%trimmedBuff);       $If(%indent+%shiftSize > 0)         $Rep(%indent+%shiftSize)           print(\" \");         $End         %shifted=1;       $End       print(trim(%buff,1)) Enter CtrlY     $End     %iter=%iter+1;   $End"
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%RestoreShiftSelection"="$If(%shifted==0)     %shiftSize=0;   $End    $If(%endColumn==0)     editor.pos(1,2,%startColumn);     editor.pos(1,1,%startLine);     editor.sel(2,0);      editor.pos(1,2,%startColumn);     editor.pos(1,1,%endLine+1);     editor.sel(2,1);      editor.pos(1,2,%startColumn);     editor.pos(1,1,%positionLine);   $Else     editor.pos(1,2,%startColumn+%shiftSize);     editor.pos(1,1,%startLine);     editor.sel(2,0);      editor.pos(1,2,%endColumn+1+%shiftSize);     editor.pos(1,1,%endLine);     editor.sel(2,1);      editor.pos(1,2,%positionColumn+%shiftSize);     editor.pos(1,1,%positionLine);   $End"
-
