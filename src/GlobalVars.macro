@@ -1,11 +1,11 @@
 %%GetTabSize=
-$If(%tabSize<0)
+  $If(%tabSize<0)
     editor.pos(1,2,1);
     %tmpBuff=Editor.Value;
     Tab print(%tmpBuff); Enter Up
     %tabSize=len(Editor.Value)-len(%tmpBuff);
     CtrlY
-$End
+  $End
 
 %%GetInitialPosition=
   %positionLine=editor.pos(0,1);
@@ -100,4 +100,32 @@ $End
       $End
       %iter=%iter+1;
     $End
+  $End
+
+%%SelectFile=
+  $If(APanel.FilePanel && fexist(%selectFile_fullPath))
+    %selectFile_path=fsplit(%selectFile_fullPath,0x00000001|0x00000002);
+    %selectFile_name=fsplit(%selectFile_fullPath,0x00000004|0x00000008);
+    panel.setpath(0,%selectFile_path,%selectFile_name);
+  $End
+
+%%BackupFile=
+  %df_fileFullPath=%bakupFile_fullPath;
+  $If(APanel.FilePanel && fexist(%df_fileFullPath))
+    %bf_previousFile=APanel.Path+"\\"+APanel.Current;
+
+    %selectFile_fullPath=%bf_fileFullPath;
+    Eval(%%SelectFile)
+
+    %bf_fileName=fsplit(%bf_fileFullPath,0x00000004|0x00000008);
+    %bf_counter=1;
+    %bf_fileBackupName=%bf_fileName+".bak"+%bf_counter;
+    $While(panel.fexist(0,%bf_fileBackupName))
+      %bf_counter=%bf_counter+1;
+      %bf_fileBackupName=%bf_fileName+".bak"+%bf_counter;
+    $End
+    ShiftF5 CtrlY print(%bf_fileBackupName) Enter
+
+    %selectFile_fullPath=%bf_previousFile;
+    Eval(%%SelectFile)
   $End
