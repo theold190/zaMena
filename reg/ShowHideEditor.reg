@@ -1,5 +1,10 @@
 REGEDIT4
 
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\CtrlShiftM]
+"Sequence"="Eval(%%MinimizeEditor)"
+"DisableOutput"=dword:00000001
+"Description"="Maximizes editor"
+
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Shell\CtrlShiftM]
 "Sequence"="Eval(%%MaximizeEditor)"
 "DisableOutput"=dword:00000001

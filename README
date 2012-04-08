@@ -21,13 +21,8 @@ Description
     GlobalVars - A collection of mini-macroses used by macros. Most of 
     them could be used separately from this macros collection.
 
-    MaximizeEditor - A macros that allows you immediately to switch from a 
-    file panel to the editor with proper file opened. It works together with 
-    MinimizeEditor macro. Just press Ctrl+Shift+M.
-
-    MinimizeEditor - A macros that allows you immediately to switch to a file 
-    panel by minimizing editor. It works together with MaximizeEditor macro. 
-    Just press Ctrl+Shift+M to hide it.
+    ShowHideEditor - A macros that allows you immediately to switch between an editor 
+    and a file panel. Just press Ctrl+Shift+M.
 
     IndentBlock - A macros that allows to do some simple formatting of the 
     selected code block. Select block to format (starting with '{' and ending 
@@ -37,12 +32,9 @@ Description
     file. Open a file in editor, exit with Esc button, then press 
     Ctrl+Shift+Z in a file panel to re-open it.
 
-    ShiftLeft - A macros that allows to shift selected code to the 
-    left with a Shift+Tab key combination. Select lines to shift and press a 
-    Shift+Tab key combination.
-
-    ShiftRight - A macros that allows to shift selected code to the 
-    right with a Tab key. Select lines to shift and press a Tab key.
+    ShiftBlock - A macros that allows to shift selected code to the 
+    right/left. Select lines to shift and press a Tab/Shift+Tab key combination 
+    to shift code to the right/left.
 
     TrimRight - A macros that allows to remove trailing whitespaces from 
     a selected code block. Select lines to trim and press a Space key.
