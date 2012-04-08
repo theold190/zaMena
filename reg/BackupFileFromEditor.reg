@@ -1,0 +1,5 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\CtrlShiftB]
+"Sequence"="Eval(%%MinimizeEditor) %loaded=mload(\"%%MinimizedFile\"); $If(%loaded==1)   %bakupFile_fullPath=%%MinimizedFile;   Eval(%%BackupFile); $End  Eval(%%MaximizeEditor)"
+"DisableOutput"=dword:00000001
