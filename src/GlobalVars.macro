@@ -110,8 +110,8 @@
   $End
 
 %%BackupFile=
-  %df_fileFullPath=%bakupFile_fullPath;
-  $If(APanel.FilePanel && fexist(%df_fileFullPath))
+  %bf_fileFullPath=%bakupFile_fullPath;
+  $If(APanel.FilePanel && fexist(%bf_fileFullPath))
     %bf_previousFile=APanel.Path+"\\"+APanel.Current;
 
     %selectFile_fullPath=%bf_fileFullPath;
