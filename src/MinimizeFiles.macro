@@ -1,6 +1,1 @@
-%%MinimizedFile=Editor.FileName;
-msave("%%MinimizedFile")
-
-$While(asc(Editor.FileName) != 0)
-  CtrlTab
-$End
+Eval(%%MinimizeEditor)

@@ -129,3 +129,24 @@
     %selectFile_fullPath=%bf_previousFile;
     Eval(%%SelectFile)
   $End
+
+%%MinimizeEditor=
+  %%MinimizedFile=Editor.FileName;
+  msave("%%MinimizedFile")
+
+  $While(asc(Editor.FileName) != 0)
+    CtrlTab
+  $End
+
+%%MaximizeEditor=
+  %loaded=mload("%%MinimizedFile");
+
+  $If(%loaded == 1)
+    CtrlTab
+    $While(index(%%MinimizedFile,Editor.FileName) == -1 && asc(Editor.FileName) != 0)
+      CtrlTab
+    $End
+
+    %%MinimizedFile="";
+    msave("%%MinimizedFile")
+  $End

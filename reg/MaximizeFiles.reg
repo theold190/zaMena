@@ -1,6 +1,6 @@
 REGEDIT4
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Shell\CtrlShiftM]
-"Sequence"="%loaded=mload(\"%%MinimizedFile\");  $If(%loaded == 1)   CtrlTab   $While(index(%%MinimizedFile,Editor.FileName) == -1 && asc(Editor.FileName) != 0)     CtrlTab   $End    %%MinimizedFile=\"\";   msave(\"%%MinimizedFile\") $End"
+"Sequence"="Eval(%%MaximizeEditor)"
 "DisableOutput"=dword:00000001
 "Description"="Minimizes opened files"
