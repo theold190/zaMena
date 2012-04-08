@@ -49,9 +49,14 @@ Description
 
 Installation
     To install a macros run a GlobalVars.reg and a corresponding .reg from a reg 
-    folder. To install all macroses at once just run zaMena.reg file. Restart 
+    folder. To install all macroses at once just run install.reg file. Restart 
     FarManager and give a try to new macro-feature. Tested on FarManager version 
     2.0.1777 with "Expand newly entered tabs to spaces" option enabled.
+
+Uninstallation
+    To uninstall all macroses you can run uninstall.reg. Or you can 
+    manually modify corresponding section of the registry (using regedit 
+    utility).
 
 Testing
     There are some code examples in a tests folder. You can use them to get

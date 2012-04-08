@@ -27,6 +27,9 @@ REGEDIT4
 "%%BackupFileFromEditor"="Eval(%%MinimizeEditor)   %bffe_loaded=mload(\"%%MinimizedFile\");    $If(%bffe_loaded==1)     %bffe_fileFullPath=%%MinimizedFile;     $If(APanel.FilePanel && APanel.Visible && fexist(%bffe_fileFullPath))       %bffe_previousFile=APanel.Path+\"\\\\\"+APanel.Current;        %selectFile_fullPath=%bffe_fileFullPath;       Eval(%%SelectFile)        Eval(%%BackupFile)        %selectFile_fullPath=%bffe_previousFile;       Eval(%%SelectFile)     $End   $End   Eval(%%MaximizeEditor)"
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%ClosedFile"=""
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%FormatCodeBlock"="editor.pos(1,1,%startFormatLine);   %indentStartFlag=index(Editor.Value,\"{\");   editor.pos(1,1,%endFormatLine);   %indentStopFlag=index(Editor.Value,\"}\");    %comment=\"Flags are indicating that we can somehow handle this block\";   $If(%indentStartFlag != -1 && %indentStopFlag != -1)     editor.pos(1,1,%startFormatLine);     %indentColumn=len(Editor.Value)-len(trim(Editor.Value,1));     %iter=%startFormatLine+1;     $While(%iter<=%endFormatLine)       editor.pos(1,1,%iter);       editor.pos(1,2,1);       %buff=Editor.Value;       %currIndent=len(%buff)-len(trim(%buff,1));        %comment=\"We have different indent for block lines and a closing bracket\";       $If(%iter != %endFormatLine)         %reqIndent=%indentColumn+%tabSize;       $Else         %reqIndent=%indentColumn;       $End        %comment=\"Now we set the requested indent and add trimmed line\";       $If(%currIndent != %reqIndent)         $Rep(%reqIndent)           print(\" \");         $End         print(trim(%buff,1)); Enter CtrlY       $End       %iter=%iter+1;     $End   $End"
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
@@ -34,6 +37,9 @@ REGEDIT4
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%GetInitialPosition"="%positionLine=editor.pos(0,1);   %positionColumn=editor.pos(0,2);    %startLine=editor.sel(0,0);   %startColumn=editor.sel(0,1);   %endLine=editor.sel(0,2);   %endColumn=editor.sel(0,3);"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%MinimizedFile"=""
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%MaximizeEditor"="%loaded=mload(\"%%MinimizedFile\");    $If(%loaded == 1)     CtrlTab     $While(index(%%MinimizedFile,Editor.FileName) == -1 && asc(Editor.FileName) != 0)       CtrlTab     $End      %%MinimizedFile=\"\";     msave(\"%%MinimizedFile\")   $End"
