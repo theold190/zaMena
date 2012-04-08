@@ -3,4 +3,4 @@ REGEDIT4
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\/]
 "Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %iter=%startLine;   editor.sel(4);    editor.pos(1,1,%iter);   %fd=index(substr(Editor.Value,0,2),\"//\");    $While (%iter<=%endLine)     editor.pos(1,2,1);     editor.pos(1,1,%iter);     $If(%fd==-1)       print(\"//\");     $Else       $If(index(substr(Editor.Value,0,2),\"//\")!=-1) Del Del $End     $End     %iter=%iter+1;   $End    editor.pos(1,2,%positionColumn);   editor.pos(1,1,%positionLine);    editor.undo(1); $End"
 "DisableOutput"=dword:00000001
-"Description"="(Un)comment lines of code"
+"Description"="(Un)Comments selected lines"

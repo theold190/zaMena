@@ -4,55 +4,55 @@ Brief
     http://code.google.com/p/far-macro-library/.
 
 Description
-    BackupFileFromEditor - Macro that creates a copy of a file that is currently 
+    BackupFileFromEditor - A macros that creates a copy of a file that is currently 
     displayed in editor. Just press Ctrl+Shift+B and an a copy with .bakX (where X 
     is a number) will be created.
 
-    BackupFileFromShell - Macro that creates a copy of a file that is under the 
+    BackupFileFromShell - A macros that creates a copy of a file that is under the 
     cursor on a file panel. Just press Ctrl+Shift+B and an a copy with .bakX (where X 
     is a number) will be created.
 
-    CommentBlock - Macro that wraps/unwraps selected code in "/* */" multiline 
+    CommentBlock - A macros that wraps/unwraps selected code in "/* */" multiline 
     comment. Select lines to comment and type '*' (star) key.
 
-    CommentLines - Macro that wraps/unwraps selected code in "//" line 
+    CommentLines - A macros that wraps/unwraps selected code in "//" line 
     comment. Select lines to comment and type '/' (slash) key.
 
     GlobalVars - A collection of mini-macroses used by macros. Most of 
     them could be used separately from this macros collection.
 
-    MaximizeEditor - Macro that allows you immediately to switch from a 
+    MaximizeEditor - A macros that allows you immediately to switch from a 
     file panel to the editor with proper file opened. It works together with 
     MinimizeEditor macro. Just press Ctrl+Shift+M.
 
-    MinimizeEditor - Macro that allows you immediately to switch to a file 
+    MinimizeEditor - A macros that allows you immediately to switch to a file 
     panel by minimizing editor. It works together with MaximizeEditor macro. 
     Just press Ctrl+Shift+M to hide it.
 
-    IndentBlock - Macro that allows to do some simple formatting of the 
+    IndentBlock - A macros that allows to do some simple formatting of the 
     selected code block. Select block to format (starting with '{' and ending 
     with '}') and press 'i' key;
 
-    ReopenFile - Macro that allows to re-open in editor a last closed 
+    ReopenFile - A macros that allows to re-open in editor a last closed 
     file. Open a file in editor, exit with Esc button, then press 
     Ctrl+Shift+Z in a file panel to re-open it.
 
-    ShiftLeft - Macro that allows to shift selected code to the 
+    ShiftLeft - A macros that allows to shift selected code to the 
     left with a Shift+Tab key combination. Select lines to shift and press a 
     Shift+Tab key combination.
 
-    ShiftRight - Macro that allows to shift selected code to the 
+    ShiftRight - A macros that allows to shift selected code to the 
     right with a Tab key. Select lines to shift and press a Tab key.
 
-    TrimRight - Macro that allows to remove trailing whitespaces from 
+    TrimRight - A macros that allows to remove trailing whitespaces from 
     a selected code block. Select lines to trim and press a Space key.
 
 Installation
-    To install a macro run a GlobalVars.reg and corresponding .reg from a reg 
-    folder. To install all macros at once just run zaMena.reg file. Restart 
-    FarManager and give a try to a new feature. Tested on FarManager version 
+    To install a macros run a GlobalVars.reg and a corresponding .reg from a reg 
+    folder. To install all macroses at once just run zaMena.reg file. Restart 
+    FarManager and give a try to new macro-feature. Tested on FarManager version 
     2.0.1777 with "Expand newly entered tabs to spaces" option enabled.
 
 Testing
     There are some code examples in a tests folder. You can use them to get
-    an idea of these macros functionality.
+    an idea of macroses functionality.

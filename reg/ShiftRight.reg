@@ -3,4 +3,4 @@ REGEDIT4
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Tab]
 "Sequence"="$If(!Selected)   $AKey $Else   editor.undo(0);   Eval(%%GetInitialPosition)    editor.sel(4);    %tabSize=-1;   Eval(%%GetTabSize)    $If(%endColumn==0 && %startLine!=%endLine)     %endLine=%endLine-1;   $End    %startShiftLine=%startLine;   %endShiftLine=%endLine;   %shiftSize=%tabSize;   Eval(%%ShiftCodeBlock)   Eval(%%RestoreShiftSelection)    editor.undo(1); $End"
 "DisableOutput"=dword:00000001
-"Description"="Shifts block of code to the right"
+"Description"="Shifts selection to the right"
