@@ -1,0 +1,11 @@
+%loaded=mload("%%MinimizedFile");
+
+$If(%loaded == 1)
+  CtrlTab
+  $While(index(%%MinimizedFile,Editor.FileName) == -1 && asc(Editor.FileName) != 0)
+    CtrlTab
+  $End
+
+  %%MinimizedFile="";
+  mload("%%MinimizedFile")
+$End

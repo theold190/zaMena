@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\CtrlShiftM]
+"Sequence"="%%MinimizedFile=Editor.FileName; msave(\"%%MinimizedFile\") $While(asc(Editor.FileName)!=0) CtrlTab $End"
+"DisableOutput"=dword:00000001
+"Description"="Minimizes opened files"
