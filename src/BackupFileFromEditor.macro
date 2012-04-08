@@ -1,8 +1,1 @@
-Eval(%%MinimizeEditor)
-%loaded=mload("%%MinimizedFile");
-$If(%loaded==1)
-  %bakupFile_fullPath=%%MinimizedFile;
-  Eval(%%BackupFile);
-$End
-
-Eval(%%MaximizeEditor)
+Eval(%%BackupFileFromEditor)
