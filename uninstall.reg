@@ -36,15 +36,22 @@ REGEDIT4
 "%%SelectFile"=-
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%SelectFileTab"=-
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%ShiftCodeBlock"=-
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
 "%%RestoreShiftSelection"=-
 
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Vars]
+"%%FindClosingBracket"=-
+
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\i]
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Shell\CtrlShiftM]
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\CtrlShiftM]
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Shell\CtrlShiftZ]
+[-HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\CtrlShiftZ]
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Esc]
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\ShiftTab]
 [-HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\Tab]
