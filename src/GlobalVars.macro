@@ -170,3 +170,47 @@
     %%MinimizedFile="";
     msave("%%MinimizedFile")
   $End
+
+%%FindClosingBracket=
+  %fcb_comment="%deep is used to find proper matching bracket";
+  %fcb_depth=1;
+  %fcb_found=0;
+  %fcb_iter=%findClosingBracket_lineStart;
+  %fcb_end=%findClosingBracket_lineEnd;
+  %fcb_column=%findClosingBracket_columnOpen+1;
+
+  editor.pos(1,1,%fcb_iter);
+  $While(%fcb_found != 1 && %fcb_iter <= %fcb_end)
+    %fcb_old_depth = %fcb_depth;
+    %fcb_open_column = index(substr(Editor.Value,%fcb_column), "{");
+    %fcb_close_column = index(substr(Editor.Value,%fcb_column), "}");
+
+    $If(%fcb_open_column != -1 && %fcb_close_column != -1)
+      $If(%fcb_open_column < %fcb_close_column)
+        %fcb_close_column=-1;
+      $Else
+        %fcb_open_column=-1;
+      $End
+    $End
+
+    $If(%fcb_open_column != -1)
+      %fcb_depth=%fcb_depth+1;
+      %fcb_tmp_column = %fcb_column+%fcb_open_column;
+    $End
+    $If(%fcb_close_column != -1)
+      %fcb_depth=%fcb_depth-1;
+      %fcb_tmp_column = %fcb_column+%fcb_close_column;
+    $End
+
+    $If(%fcb_old_depth == %fcb_depth)
+      %fcb_iter=%fcb_iter+1;
+      %fcb_column=0;
+      editor.pos(1,1,%fcb_iter);
+    $Else
+      %fcb_column=%fcb_tmp_column+1;
+      $If(%fcb_depth == 0)
+        %fcb_found=1;
+      $End
+    $End
+  $End
+  %findClosingBracket_resultLine=%fcb_iter;

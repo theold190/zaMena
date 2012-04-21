@@ -32,9 +32,7 @@ while (guess != magic)  // as long as guess is incorrect
 {
 if(guess > magic) {
 cout << "Too big! Guess again..." << endl;
-}
-else            // guess is less than magic
-{
+}else{            // guess is less than magic
 cout << "Too small! Guess again..." << endl;
 }
 cin >> guess;
