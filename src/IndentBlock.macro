@@ -4,6 +4,12 @@ $Else
   editor.undo(0);
   Eval(%%GetInitialPosition)
 
+  $If(%startLine==%endLine)
+    $AKey
+    editor.undo(0);
+    $Exit
+  $End
+
   editor.sel(4);
 
   %tabSize=-1;
