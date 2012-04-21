@@ -1,5 +1,9 @@
 %rf_loaded=mload("%%ClosedFile");
 $If(%rf_loaded == 1 && fexist(%%ClosedFile))
+  $If(asc(Editor.FileName) != 0)
+    Eval(%%MinimizeEditor)
+  $End
+
   %rf_file=%%ClosedFile;
   %rf_previousFile=APanel.Path+"\\"+APanel.Current;
 

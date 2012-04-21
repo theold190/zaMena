@@ -1,7 +1,12 @@
 REGEDIT4
 
 [HKEY_CURRENT_USER\Software\far2\KeyMacros\Shell\CtrlShiftZ]
-"Sequence"="%rf_loaded=mload(\"%%ClosedFile\"); $If(%rf_loaded == 1 && fexist(%%ClosedFile))   %rf_file=%%ClosedFile;   %rf_previousFile=APanel.Path+\"\\\\\"+APanel.Current;    %selectFile_fullPath=%rf_file;   Eval(%%SelectFile)   F4   Eval(%%MinimizeEditor)    %selectFile_fullPath=%rf_previousFile;   Eval(%%SelectFile)   Eval(%%MaximizeEditor)   %selectFileTab_fileName=%rf_file;   Eval(%%SelectFileTab)    %%ClosedFile=\"\";   msave(\"%%ClosedFile\"); $End"
+"Sequence"="%rf_loaded=mload(\"%%ClosedFile\"); $If(%rf_loaded == 1 && fexist(%%ClosedFile))   $If(asc(Editor.FileName) != 0)     Eval(%%MinimizeEditor)   $End    %rf_file=%%ClosedFile;   %rf_previousFile=APanel.Path+\"\\\\\"+APanel.Current;    %selectFile_fullPath=%rf_file;   Eval(%%SelectFile)   F4   Eval(%%MinimizeEditor)    %selectFile_fullPath=%rf_previousFile;   Eval(%%SelectFile)    Eval(%%MaximizeEditor)   %selectFileTab_fileName=%rf_file;   Eval(%%SelectFileTab)    %%ClosedFile=\"\";   msave(\"%%ClosedFile\"); $End"
+"DisableOutput"=dword:00000001
+"Description"="Reopens recently closed file"
+
+[HKEY_CURRENT_USER\Software\far2\KeyMacros\Editor\CtrlShiftZ]
+"Sequence"="%rf_loaded=mload(\"%%ClosedFile\"); $If(%rf_loaded == 1 && fexist(%%ClosedFile))   $If(asc(Editor.FileName) != 0)     Eval(%%MinimizeEditor)   $End    %rf_file=%%ClosedFile;   %rf_previousFile=APanel.Path+\"\\\\\"+APanel.Current;    %selectFile_fullPath=%rf_file;   Eval(%%SelectFile)   F4   Eval(%%MinimizeEditor)    %selectFile_fullPath=%rf_previousFile;   Eval(%%SelectFile)    Eval(%%MaximizeEditor)   %selectFileTab_fileName=%rf_file;   Eval(%%SelectFileTab)    %%ClosedFile=\"\";   msave(\"%%ClosedFile\"); $End"
 "DisableOutput"=dword:00000001
 "Description"="Reopens recently closed file"
 
